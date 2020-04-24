@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 import {
   View,
@@ -17,9 +18,11 @@ import {
   ForgotPasswordText,
   CreateAccountButton,
   CreateAccountButtonText,
-} from './style';
+} from './styles';
 
 const SignIn: React.FC = () => {
+  const navegation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -53,7 +56,7 @@ const SignIn: React.FC = () => {
       </KeyboardAvoidingView>
       <CreateAccountButton
         onPress={() => {
-          console.log('tira depois');
+          navegation.navigate('SignUp');
         }}
       >
         <Icon name="log-in" size={20} color="#ff9000" />
