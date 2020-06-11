@@ -1,5 +1,8 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 export const Container = styled.View`
   flex: 1;
@@ -10,8 +13,8 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   font-size: 24px;
-  color: #f4ede8;
-  font-family: 'RobotoSlab-Medium';
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fonts.medium};
   margin: 64px 0 24px;
 `;
 
@@ -20,9 +23,9 @@ export const ForgotPassword = styled.TouchableOpacity`
 `;
 
 export const ForgotPasswordText = styled.Text`
-  color: #f4ede8;
+  color: ${({ theme }) => theme.colors.white};
   font-size: 16px;
-  font-family: 'RobotoSlab-Regular';
+  font-family: ${({ theme }) => theme.fonts.regular};
 `;
 
 export const CreateAccountButton = styled.TouchableOpacity`
@@ -30,19 +33,23 @@ export const CreateAccountButton = styled.TouchableOpacity`
   left: 0;
   right: 0;
   bottom: 0;
-  background: #312e38;
+  background: ${({ theme }) => theme.colors.background};
   border-top-width: 1px;
-  border-color: #232129;
-  padding: 16px 0;
+  border-color: ${({ theme }) => theme.colors.inputs};
+  padding: 16px 0 ${8 + getBottomSpace()}px;
 
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 `;
 
 export const CreateAccountButtonText = styled.Text`
-  color: #ff9000;
+  color: ${({ theme }) => theme.colors.orange};
   font-size: 18px;
-  font-family: 'RobotoSlab-Regular';
+  font-family: ${({ theme }) => theme.fonts.regular};
   margin-left: 16px;
+`;
+
+export const Icon = styled(FeatherIcon)`
+  color: ${({ theme }) => theme.colors.orange};
 `;

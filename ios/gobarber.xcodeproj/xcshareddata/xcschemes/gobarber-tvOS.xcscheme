@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "gobarberreactnative.app"
-               BlueprintName = "gobarberreactnative"
-               ReferencedContainer = "container:gobarberreactnative.xcodeproj">
+               BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+               BuildableName = "gobarber-tvOS.app"
+               BlueprintName = "gobarber-tvOS"
+               ReferencedContainer = "container:gobarber.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "gobarberreactnativeTests.xctest"
-               BlueprintName = "gobarberreactnativeTests"
-               ReferencedContainer = "container:gobarberreactnative.xcodeproj">
+               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
+               BuildableName = "gobarber-tvOSTests.xctest"
+               BlueprintName = "gobarber-tvOSTests"
+               ReferencedContainer = "container:gobarber.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,10 +54,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "gobarberreactnative.app"
-            BlueprintName = "gobarberreactnative"
-            ReferencedContainer = "container:gobarberreactnative.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "gobarber-tvOS.app"
+            BlueprintName = "gobarber-tvOS"
+            ReferencedContainer = "container:gobarber.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "gobarberreactnative.app"
-            BlueprintName = "gobarberreactnative"
-            ReferencedContainer = "container:gobarberreactnative.xcodeproj">
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "gobarber-tvOS.app"
+            BlueprintName = "gobarber-tvOS"
+            ReferencedContainer = "container:gobarber.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

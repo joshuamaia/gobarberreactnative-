@@ -1,23 +1,27 @@
 import React, { useCallback, useRef } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
 import {
+  Image,
   View,
   ScrollView,
-  Image,
   KeyboardAvoidingView,
   Platform,
   TextInput,
   Alert,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
-import logo from '../../assets/logo.png';
+
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+
 import getValidationErrors from '../../utils/getValidationErrors';
+
 import { useAuth } from '../../hooks/auth';
+
+import logoImg from '../../assets/logo.png';
+
 import {
   Container,
   Title,
@@ -25,6 +29,7 @@ import {
   ForgotPasswordText,
   CreateAccountButton,
   CreateAccountButtonText,
+  Icon,
 } from './styles';
 
 interface SignInFormData {
@@ -33,11 +38,11 @@ interface SignInFormData {
 }
 
 const SignIn: React.FC = () => {
-  const navegation = useNavigation();
-  const { signIn } = useAuth();
-
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const navigation = useNavigation();
+  const { signIn } = useAuth();
+
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
       try {
@@ -45,32 +50,28 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-            .email('Digite um e-mail válido')
-            .required('E-mail obrigatório'),
-          password: Yup.string().required('Senha obrigatória'),
+            .required('E-mail é obrigatório')
+            .email('Digite um e-mail válido'),
+          password: Yup.string().required('Senha é obrigatória'),
         });
 
-        await schema.validate(data, {
-          abortEarly: false,
-        });
+        await schema.validate(data, { abortEarly: false });
+
         await signIn({
           email: data.email,
           password: data.password,
         });
-
-        // history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
-
           return;
         }
 
         Alert.alert(
           'Erro na autenticação',
-          'Ocorreu um erro ao fazer login, cheque as credenciais',
+          'Ocorreu um error ao fazer login, cheque as credenciais.',
         );
       }
     },
@@ -89,11 +90,13 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logo} />
+            <Image source={logoImg} />
+
             <View>
               <Title>Faça seu logon</Title>
             </View>
-            <Form ref={formRef} onSubmit={handleSignIn}>
+
+            <Form onSubmit={handleSignIn} ref={formRef}>
               <Input
                 autoCorrect={false}
                 autoCapitalize="none"
@@ -106,37 +109,31 @@ const SignIn: React.FC = () => {
                   passwordInputRef.current?.focus();
                 }}
               />
+
               <Input
                 ref={passwordInputRef}
-                secureTextEntry
                 name="password"
                 icon="lock"
                 placeholder="Senha"
+                secureTextEntry
                 returnKeyType="send"
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
+                onSubmitEditing={() => formRef.current?.submitForm()}
               />
-              <Button
-                onPress={() => {
-                  formRef.current?.submitForm();
-                }}
-              >
+
+              <Button onPress={() => formRef.current?.submitForm()}>
                 Entrar
               </Button>
             </Form>
+
             <ForgotPassword>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton
-        onPress={() => {
-          navegation.navigate('SignUp');
-        }}
-      >
-        <Icon name="log-in" size={20} color="#ff9000" />
+
+      <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
+        <Icon name="log-in" size={20} />
         <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
       </CreateAccountButton>
     </>
